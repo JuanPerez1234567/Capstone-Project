@@ -4,7 +4,7 @@ require('dotenv').config()
 const mysql = require('mysql2')
 const express = require('express')
 
-
+/*
 //create connection
 const db = mysql.createConnection({
     host: "localhost",
@@ -19,7 +19,7 @@ db.connect((err) =>{
         console.log('MySql Connected...')
     }
 })
-
+*/
 //express app
 const app = express()
 
