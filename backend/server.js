@@ -41,6 +41,10 @@ app.get('/', (req, res) => {
 
 })
 
+app.get('/:name', (req, res) =>{
+    res.send(`Welcome ${req.params.name}`);
+})
+
 //listen for request
 app.listen(process.env.PORT, () => { 
     console.log('listening on port 4000!!')
