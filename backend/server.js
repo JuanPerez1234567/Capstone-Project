@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
    
 
-    res.json({mssg: 'Welcome to the app'})
+    res.send(`${process.env.MYSQL_HOST}`)
 
 })
 app.get('/notes/:id', async(req,res)=>{
