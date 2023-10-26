@@ -1,25 +1,13 @@
-require('dotenv').config()
 
 
-const mysql = require('mysql2')
-const express = require('express')
+import mysql from 'mysql2'
+import dotenv from 'dotenv'
+import express from 'express'
+import {getNotes, getNote, createNote} from './database.js'
+dotenv.config()
 
-/*
-//create connection
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "capstone"
-  });
 
-//Connect
-db.connect((err) =>{
-    if (err) throw err
-    else{
-        console.log('MySql Connected...')
-    }
-})
-*/
+
 //express app
 const app = express()
 
@@ -39,6 +27,15 @@ app.get('/', (req, res) => {
 
     res.json({mssg: 'Welcome to the app'})
 
+})
+app.get('/notes/:id', async(req,res)=>{
+    const id = req.params.id
+    const result = await getNote(id)
+    res.send(result)
+})
+app.get('/notes', async(req, res)=>{
+    const notes = await getNotes()
+    res.send(notes)
 })
 
 app.get('/:name', (req, res) =>{
